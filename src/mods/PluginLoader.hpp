@@ -23,6 +23,7 @@ bool reframework_on_pre_gui_draw_element(REFOnPreGuiDrawElementCb cb);
 
 lua_State* reframework_create_script_state();
 void reframework_destroy_script_state(lua_State*);
+void reframework_reset_scripts();
 namespace reframework {
 extern REFrameworkRendererData g_renderer_data;
 }

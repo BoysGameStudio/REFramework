@@ -78,6 +78,8 @@ REFrameworkPluginFunctions g_plugin_functions {
     reframework_on_imgui_frame,
     reframework_on_imgui_draw_ui,
     reframework_on_pre_gui_draw_element,
+
+    reframework_reset_scripts,
 };
 
 REFrameworkSDKFunctions g_sdk_functions {
@@ -861,6 +863,13 @@ lua_State* reframework_create_script_state() {
 /// </summary>
 void reframework_destroy_script_state(lua_State* lua_state) {
     ScriptRunner::get()->delete_state(lua_state);
+}
+
+/// <summary>
+/// Request a full reset/reload of all Lua autorun scripts (deferred to the next frame).
+/// </summary>
+void reframework_reset_scripts() {
+    ScriptRunner::get()->request_reset();
 }
 
 bool reframework_on_lua_state_created(REFLuaStateCreatedCb cb) {

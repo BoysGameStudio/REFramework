@@ -394,6 +394,12 @@ public:
         m_has_any_transform_updates = true;
     }
 
+    // Request a full Lua script reset (reload of all autorun scripts). Thread-safe:
+    // sets a flag consumed on the next on_frame() so the reset runs on the game thread.
+    void request_reset() {
+        m_reset_requested.store(true);
+    }
+
 private:
     ScriptState::GarbageCollectionData make_gc_data() const {
         ScriptState::GarbageCollectionData data{};
@@ -427,6 +433,7 @@ private:
     bool m_scene_okay{false};
     bool m_has_any_transform_updates{false};
     bool m_needs_first_reset{true};
+    std::atomic<bool> m_reset_requested{false};
     bool m_last_online_match_state{false};
     bool m_attempted_hook_battle_rule{false};
     bool m_console_startup_checked{false};

@@ -47,6 +47,7 @@ typedef void (*REFOnImGuiDrawUICb)(REFImGuiFrameCbData*);
 
 typedef struct lua_State* (*REFCreateScriptState)();
 typedef void (*REFDeleteScriptState)(struct lua_State*);
+typedef void (*REFResetScripts)();
 
 typedef bool (*REFOnInitializeFn)(REFInitializedCb);
 typedef bool (*REFOnLuaStateCreatedFn)(REFLuaStateCreatedCb);
@@ -91,6 +92,8 @@ typedef struct {
     REFOnImGuiFrameFn on_imgui_frame;
     REFOnImGuiDrawUIFn on_imgui_draw_ui;
     REFOnPreGuiDrawElementFn on_pre_gui_draw_element;
+
+    REFResetScripts reset_scripts;
 } REFrameworkPluginFunctions;
 
 typedef struct {

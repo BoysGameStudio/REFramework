@@ -59,6 +59,10 @@ public:
         return s_api->reframework()->is_drawing_ui();
     }
 
+    static void ResetScripts() {
+        s_api->reset_scripts();
+    }
+
     generic <typename T> where T : ref class
     static T GetNativeSingletonT() {
         auto fullName = T::typeid->FullName;
