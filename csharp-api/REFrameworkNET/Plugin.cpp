@@ -29,7 +29,6 @@ extern "C" __declspec(dllexport) bool reframework_plugin_initialize(const REFram
     HWND console = GetConsoleWindow();
 
     ShowWindow(console, SW_HIDE);
-    ShowWindow(console, SW_SHOWNOACTIVATE);
 
     if (prev)
     {
